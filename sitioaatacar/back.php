@@ -66,7 +66,7 @@
 
             $result = $db->query("SELECT userId,username FROM users");
             while($row = $result->fetch_assoc()){
-                echo "<span style='font-size: 20px'>".$row['username'] . "</span><form method='get' role='form' action='borrar_usuario.php' style='display: inline'><input type='hidden' name='usuario' value='".$row['userId']."'>
+                echo "<span style='font-size: 20px'>".$row['username'] . "</span><form method='post' role='form' action='borrar_usuario.php' style='display: inline'><input type='hidden' name='usuario' value='".$row['userId']."'>
                                         <input type='submit' value='Eliminar'></form><br>";
             }
 

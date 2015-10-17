@@ -1,3 +1,4 @@
+
 <html>
 <head>
     <title>CSRF proof of concept</title>

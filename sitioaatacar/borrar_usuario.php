@@ -2,12 +2,12 @@
     session_start();
 
     //Chequear que sea el dueño el que se esta eliminando
-    if(isset($_GET['usuario']) && isset($_SESSION['userId'])){
+    if(isset($_POST['usuario']) && isset($_SESSION['userId'])){
         $db = new mysqli('localhost', 'root', '', 'csrf');
 
         if($db->connect_errno > 0) die('Unable to connect to database [' . $db->connect_error . ']');
 
-        $result = $db->query("DELETE FROM users WHERE userId='".$_GET['usuario']."'");
+        $result = $db->query("DELETE FROM users WHERE userId='".$_POST['usuario']."'");
         if($result) $message = "El usuario ha sido eliminado correctamente!";
         else $message = "Hubo un problema al eliminar al usuario";
         $db->close();

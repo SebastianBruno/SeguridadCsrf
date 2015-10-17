@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $success = false;
     if(isset($_POST['create'])){
         $db = new mysqli('localhost', 'root', '', 'csrf');
