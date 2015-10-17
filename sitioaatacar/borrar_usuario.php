@@ -1,6 +1,10 @@
 <?php
     session_start();
 
+    if (stripos($_SERVER['HTTP_REFERER'], "http://localhost/SeguridadCsrfContramedidas/sitioaatacar/back.php")){
+        die();
+    }
+
     //Chequear que sea el dueño el que se esta eliminando
     if(isset($_POST['usuario']) && isset($_SESSION['userId'])){
         $db = new mysqli('localhost', 'root', '', 'csrf');

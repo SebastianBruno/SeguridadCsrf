@@ -7,7 +7,6 @@
         $db = new mysqli('localhost', 'root', '', 'csrf');
 
         if($db->connect_errno > 0) die('Unable to connect to database [' . $db->connect_error . ']');
-
         $result = $db->query("SELECT userId,username FROM users WHERE username = '".$_POST['username']."' AND password = '".$_POST['password']."'");
         $user = $result->fetch_assoc();
 
@@ -16,12 +15,9 @@
             $_SESSION['username'] = $user['username'];
         }else $wrongLogin = true;
 
-        $db->close();
-    }
+        $db->close(); }
     elseif(isset($_POST['logout'])){
-        session_unset();
-    }
-?>
+        session_unset();}?>
 
 <html>
 <head>
@@ -66,8 +62,12 @@
 
             $result = $db->query("SELECT userId,username FROM users");
             while($row = $result->fetch_assoc()){
-                echo "<span style='font-size: 20px'>".$row['username'] . "</span><form method='post' role='form' action='borrar_usuario.php' style='display: inline'><input type='hidden' name='usuario' value='".$row['userId']."'>
-                                        <input type='submit' value='Eliminar'></form><br>";
+                echo "<span style='font-size: 20px'>".$row['username'] . "</span>
+                        <form method='post' role='form' action='borrar_usuario.php' style='display: inline'>
+                            <input type='hidden' name='usuario' value='".$row['userId']."'>
+                            <input type='submit' value='Eliminar'>
+                        </form>
+                        <br>";
             }
 
             $db->close();
